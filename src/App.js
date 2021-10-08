@@ -1,25 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import { Button } from "@mui/material";
+import Box from "@mui/material/Box";
+import Container from "@mui/material/Container";
+import { useState } from "react";
+import Todo from "./Todos/Todo";
+import TodoList from "./Todos/TodoList";
+const App = () => {
+  const [todoList, setTodoList] = useState([]);
 
-function App() {
+  const addTodoListHandler = (tName) => {
+    setTodoList((prevTodos) => {
+      return [...prevTodos, { tName, id: Math.random().toString() }];
+    });
+  };
+  const clearTodo = () => {
+    setTodoList([]);
+  };
+  const removeTodo = (id) => {
+    const removeArr = todoList.filter((todo) => todo.id !== id);
+    setTodoList(removeArr);
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container maxWidth="md">
+      <Box sx={{ bgcolor: "#cfe8fc", width: "auto", height: "50vh" }}>
+        <Todo onAddTodos={addTodoListHandler} />
+      </Box>
+
+      <Box sx={{ bgcolor: "#cfe8fc", height: "100vh" }}>
+        <div className="btn-clear">
+          <Button onClick={clearTodo} variant="outlined">
+            ClearTodos
+          </Button>
+        </div>
+        <TodoList remove={removeTodo} todos={todoList} />
+      </Box>
+    </Container>
   );
-}
+};
 
 export default App;
