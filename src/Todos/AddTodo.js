@@ -2,7 +2,7 @@ import { AddCircleOutlined } from "@mui/icons-material";
 import { Button, TextField } from "@mui/material";
 import { useState } from "react";
 import "./Todo.css";
-const Todo = ({ onAddTodos }) => {
+const AddTodo = ({ onAddTodos }) => {
   const [todos, setTodos] = useState("");
   const addTodoHandler = (event) => {
     event.preventDefault();
@@ -36,4 +36,4 @@ const Todo = ({ onAddTodos }) => {
   );
 };
 
-export default Todo;
+export default AddTodo;

@@ -1,9 +1,8 @@
-import { Button } from "@mui/material";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import { useState } from "react";
-import Todo from "./Todos/Todo";
-import TodoList from "./Todos/TodoList";
+import AddTodo from "./Todos/AddTodo";
+import Todos from "./Todos/Todos";
 const App = () => {
   const [todoList, setTodoList] = useState([]);
 
@@ -15,23 +14,23 @@ const App = () => {
   const clearTodo = () => {
     setTodoList([]);
   };
-  const removeTodo = (id) => {
-    const removeArr = todoList.filter((todo) => todo.id !== id);
-    setTodoList(removeArr);
-  };
+
   return (
-    <Container maxWidth="md">
-      <Box sx={{ bgcolor: "#cfe8fc", width: "auto", height: "50vh" }}>
-        <Todo onAddTodos={addTodoListHandler} />
+    <Container
+      sx={{
+        position: " absolute",
+        left: " 50%",
+        top: " 50%",
+        transform: " translate(-50%, -50%)",
+      }}
+      maxWidth="md"
+    >
+      <Box sx={{ bgcolor: "#cfe8fc", width: "auto", height: "50vh", mb: 4 }}>
+        <AddTodo onAddTodos={addTodoListHandler} />
       </Box>
 
-      <Box sx={{ bgcolor: "#cfe8fc", height: "100vh" }}>
-        <div className="btn-clear">
-          <Button onClick={clearTodo} variant="outlined">
-            ClearTodos
-          </Button>
-        </div>
-        <TodoList remove={removeTodo} todos={todoList} />
+      <Box sx={{ bgcolor: "#eee", height: "auto", mb: 4 }}>
+        <Todos clear={clearTodo} todos={todoList} />
       </Box>
     </Container>
   );
