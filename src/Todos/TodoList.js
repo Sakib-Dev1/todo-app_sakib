@@ -1,11 +1,16 @@
-import { DeleteIcon } from "@mui/icons-material/Delete";
-import { EditIcon } from "@mui/icons-material/Edit";
+import DeleteIcon from "@mui/icons-material/Delete";
+import EditIcon from "@mui/icons-material/Edit";
 import { Button, Checkbox, ListItem, Stack } from "@mui/material";
-import { Box } from "@mui/system";
+import Box from "@mui/material/Box";
+import { useState } from "react";
+import EditTodo from "./EditTodo";
 
-const TodoList = ({ todo }) => {
+const TodoList = ({ todo, remove,edit }) => {
+  const [isEditing, setIsEditing] = useState(false);
+  console.log(todo);
   const { tName, id } = todo;
-  return (
+  console.log(tName, id);
+  const thisComponent = (
     <Box
       sx={{
         display: "flex",
@@ -13,6 +18,7 @@ const TodoList = ({ todo }) => {
         alignItems: "center",
         p: 1,
         bgcolor: "background.paper",
+        mb: 2,
       }}
     >
       <ListItem key={id}>
@@ -21,19 +27,22 @@ const TodoList = ({ todo }) => {
       </ListItem>
       <Stack direction="row" spacing={2}>
         <Button
+          onClick={() => setIsEditing(true)}
           color="success"
           variant="outlined"
           startIcon={<EditIcon />}
         ></Button>
         <Button
+          onClick={() => remove(id)}
           color="error"
-          // onClick={() => remove(todo.id)}
           variant="outlined"
           endIcon={<DeleteIcon />}
         ></Button>
       </Stack>
     </Box>
   );
+  const newComponent = <EditTodo edit={edit} item={todo} />;
+  return <>{(isEditing && newComponent) || (!isEditing && thisComponent)}</>;
 };
 
 export default TodoList;

@@ -1,9 +1,10 @@
 import { Button, List } from "@mui/material";
-import React from "react";
 import TodoList from "./TodoList";
-import "./TodoList.css";
+import "./Todos.css";
 
-const Todos = ({ todos, clear }) => {
+const Todos = ({ todos, clear, remove, edit }) => {
+  console.log(todos);
+
   return (
     <List
       sx={{
@@ -15,14 +16,17 @@ const Todos = ({ todos, clear }) => {
       }}
     >
       {todos.map((todo) => {
-        return <TodoList todo={todo} />;
+        return (
+          <TodoList key={todo.id} edit={edit} remove={remove} todo={todo} />
+        );
       })}
-
-      <div className="btn-clear">
-        <Button ocClick={clear} variant="outlined">
-          ClearTodos
-        </Button>
-      </div>
+      {todos.length > 0 && (
+        <div className="btn-clear">
+          <Button onClick={clear} variant="outlined">
+            ClearTodos
+          </Button>
+        </div>
+      )}
     </List>
   );
 };
