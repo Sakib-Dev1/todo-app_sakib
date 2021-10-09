@@ -5,11 +5,11 @@ import Box from "@mui/material/Box";
 import { useState } from "react";
 import EditTodo from "./EditTodo";
 
-const TodoList = ({ todo, remove,edit }) => {
+const TodoList = ({ todo, remove, edit }) => {
   const [isEditing, setIsEditing] = useState(false);
-  console.log(todo);
+
   const { tName, id } = todo;
-  console.log(tName, id);
+
   const thisComponent = (
     <Box
       sx={{

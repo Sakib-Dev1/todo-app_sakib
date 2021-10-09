@@ -8,7 +8,14 @@ import Todos from "./Todos";
 const AddTodo = () => {
   const [todos, setTodos] = useState("");
   const [todoList, setTodoList] = useState([
-    { tName: "Let add something", id: uuidv4() },
+    {
+      tName: "Let add something",
+      id: uuidv4(),
+    },
+    {
+      tName: "Good Morning",
+      id: uuidv4(),
+    },
   ]);
 
   const addTodoListHandler = (tName) => {
@@ -31,7 +38,7 @@ const AddTodo = () => {
     setTodos(event.target.value);
   };
   const edit = ({ tName, id }) => {
-    console.log({ todoList });
+    console.log({ todoList }, "TodoList");
     const newTodoList = todoList.map((item) =>
       item.id === id ? (item.tName = tName) : item
     );

@@ -10,7 +10,6 @@ const Todos = ({ todos, clear, remove, edit }) => {
       sx={{
         width: "100%",
         maxWidth: 460,
-
         borderRadius: 4,
         mx: "auto",
       }}
