@@ -3,18 +3,17 @@ import { Button, TextField } from "@mui/material";
 import { useState } from "react";
 import "./EditTodo.css";
 
-const EditTodo = ({ item, edit }) => {
+const EditTodo = ({ item, edit, onUpdateList }) => {
   // console.log(item);
   const [updatedValue, setUpdatedValue] = useState(item.tName);
-  console.log(updatedValue, setUpdatedValue);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log({ updatedValue });
 
     const editObj = { tName: updatedValue, id: item.id };
-
+    console.log({ editObj });
     edit(editObj);
+    onUpdateList();
   };
   return (
     <form onSubmit={handleSubmit} className="form">
@@ -24,12 +23,7 @@ const EditTodo = ({ item, edit }) => {
         onChange={(event) => setUpdatedValue(event.target.value)}
         InputProps={{
           endAdornment: (
-            <Button
-              color="success"
-              variant="outlined"
-              type="submit"
-              onClick={(event) => setUpdatedValue(event.target.value)}
-            >
+            <Button color="success" variant="outlined" type="submit">
               <UpdateIcon />
             </Button>
           ),

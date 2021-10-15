@@ -5,10 +5,14 @@ import Box from "@mui/material/Box";
 import { useState } from "react";
 import EditTodo from "./EditTodo";
 
-const TodoList = ({ todo, remove, edit }) => {
+const TodoList = ({ todo, remove, edit, check }) => {
   const [isEditing, setIsEditing] = useState(false);
 
+  console.log(todo);
   const { tName, id } = todo;
+  const updatedListHandler = () => {
+    setIsEditing(false);
+  };
 
   const thisComponent = (
     <Box
@@ -21,8 +25,18 @@ const TodoList = ({ todo, remove, edit }) => {
         mb: 2,
       }}
     >
-      <ListItem key={id}>
-        <Checkbox defaultChecked={false} color="success" />
+      <ListItem
+        style={{
+          textDecoration: todo.isCompleted ? "line-through" : "none",
+        }}
+        key={id}
+      >
+        <Checkbox
+          onChange={() => check(id)}
+          checked={todo.isCompleted}
+          value={todo.isCompleted}
+          color="success"
+        />
         {tName}
       </ListItem>
       <Stack direction="row" spacing={2}>
@@ -41,7 +55,9 @@ const TodoList = ({ todo, remove, edit }) => {
       </Stack>
     </Box>
   );
-  const newComponent = <EditTodo edit={edit} item={todo} />;
+  const newComponent = (
+    <EditTodo onUpdateList={updatedListHandler} edit={edit} item={todo} />
+  );
   return <>{(isEditing && newComponent) || (!isEditing && thisComponent)}</>;
 };
 

@@ -2,5 +2,11 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background-color: #e0f7fa;
+  background-color: #fff;
+}
+.check {
+  text-decoration: line-through;
+}
+.uncheck {
+  text-decoration: none;
 }
