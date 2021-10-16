@@ -8,7 +8,7 @@ const Todos = ({ todos, check, clear, remove, edit }) => {
     <>
       <List
         sx={{
-          width: { xs: "100vw", md: ' "100%"' },
+          width: { xs: "50vw", md: ' "100%"' },
           maxWidth: 460,
           borderRadius: 4,
           mx: "auto",
