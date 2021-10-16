@@ -6,7 +6,7 @@ import Typography from "@mui/material/Typography";
 import moment from "moment";
 import { useState } from "react";
 
-const Header = ({ active }) => {
+const Header = ({ active, unCompletedTodos, completedTodos, allTodos }) => {
   let time = moment().format("MMMM Do YYYY, h:mm:ss a");
   const [cTime, setcTime] = useState(time);
 
@@ -15,6 +15,12 @@ const Header = ({ active }) => {
     setcTime(time);
   };
   setInterval(updateTime, 1000);
+  const handleComplete = (e) => {
+    completedTodos();
+  };
+  const handleUncomplete = (e) => {
+    unCompletedTodos();
+  };
   return (
     <>
       <Typography
@@ -68,9 +74,15 @@ const Header = ({ active }) => {
               alignItems: { xs: "center", md: "center" },
             }}
           >
-            <Button variant="contained">All</Button>
-            <Button variant="contained">Complete</Button>
-            <Button variant="contained">Uncomplete</Button>
+            <Button onClick={() => allTodos()} variant="contained">
+              All
+            </Button>
+            <Button onClick={handleComplete} variant="contained">
+              Complete
+            </Button>
+            <Button onClick={handleUncomplete} variant="contained">
+              Uncomplete
+            </Button>
           </Toolbar>
         </AppBar>
       </Box>

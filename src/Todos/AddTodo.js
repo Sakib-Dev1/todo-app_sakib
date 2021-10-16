@@ -20,6 +20,7 @@ const AddTodo = () => {
       isCompleted: false,
     },
   ]);
+  const [completed, setCompleted] = useState(null);
 
   const addTodoListHandler = (tName) => {
     console.log({ tName });
@@ -67,10 +68,25 @@ const AddTodo = () => {
     (todo) => todo.isCompleted === false
   ).length;
   console.log(activeTodos);
+  const unCompletedTodos = () => setCompleted(false);
+
+  const completedTodos = () => setCompleted(true);
+
+  const allTodos = () => setCompleted(null);
+  const filteredTodos =
+    completed !== null
+      ? todoList.filter((todo) => todo.isCompleted === completed)
+      : todoList;
+  console.log({ filteredTodos });
 
   return (
     <>
-      <Header active={activeTodos} />
+      <Header
+        unCompletedTodos={unCompletedTodos}
+        completedTodos={completedTodos}
+        allTodos={allTodos}
+        active={activeTodos}
+      />
       <div className="container">
         <form onSubmit={addTodoHandler}>
           <TextField
@@ -90,7 +106,7 @@ const AddTodo = () => {
 
       <Box sx={{ height: "auto", mb: 4 }}>
         <Todos
-          todos={todoList}
+          todos={filteredTodos}
           edit={edit}
           remove={remove}
           clear={clearTodo}
