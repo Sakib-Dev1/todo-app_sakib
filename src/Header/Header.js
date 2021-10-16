@@ -93,7 +93,7 @@ const Header = ({ active, unCompletedTodos, completedTodos, allTodos }) => {
               onClick={handleUncomplete}
               variant="contained"
             >
-              Uncomplete
+              Incomplete
             </Button>
           </Toolbar>
         </AppBar>
