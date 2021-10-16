@@ -79,7 +79,7 @@ const AddTodo = () => {
             onChange={addTodo}
             InputProps={{
               endAdornment: (
-                <Button color="primary" variant="contained" type="submit">
+                <Button color="primary" variant="outlined" type="submit">
                   <AddCircleOutlined />
                 </Button>
               ),
