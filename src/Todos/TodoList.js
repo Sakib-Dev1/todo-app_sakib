@@ -21,7 +21,7 @@ const TodoList = ({ todo, remove, edit, check }) => {
         alignItems: "center",
         p: 1,
         bgcolor: "background.paper",
-        mb: 2,
+        m: 1,
       }}
     >
       <ListItem

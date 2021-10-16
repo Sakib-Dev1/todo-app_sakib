@@ -30,7 +30,7 @@ const Header = ({ active, unCompletedTodos, completedTodos, allTodos }) => {
           fontWeight: "bold",
           textTransform: "uppercase",
           color: "#333",
-          p: 4,
+          p: 2,
         }}
       >
         ToDo
@@ -56,7 +56,7 @@ const Header = ({ active, unCompletedTodos, completedTodos, allTodos }) => {
           {active} Active Tasks
         </Typography>
       </Box>
-      <Box sx={{ flexGrow: 1, pt: 4 }}>
+      <Box sx={{ flexGrow: 1, p: 2 }}>
         <AppBar
           sx={{
             width: "100%",
@@ -82,6 +82,7 @@ const Header = ({ active, unCompletedTodos, completedTodos, allTodos }) => {
               All
             </Button>
             <Button
+              sx={{ mr: { xs: 1 }, ml: { xs: 1 } }}
               color="secondary"
               onClick={handleComplete}
               variant="contained"
