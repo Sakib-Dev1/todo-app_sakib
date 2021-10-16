@@ -1,4 +1,4 @@
-import { Button, Container } from "@mui/material";
+import { Button } from "@mui/material";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -29,7 +29,27 @@ const Header = ({ active }) => {
       >
         ToDo
       </Typography>
-      <Typography sx={{ textAlign: "center" }}>{cTime}</Typography>
+      <Box
+        sx={{
+          textAlign: "center",
+          color: "#333",
+          borderRadius: "9px",
+        }}
+      >
+        <Typography sx={{ mb: 2 }} variant="h5" component="h5">
+          {cTime}
+        </Typography>
+        <Typography
+          noWrap
+          sx={{
+            fontSize: "1rem",
+            mb: 1,
+            color: "#32CD32",
+          }}
+        >
+          {active} Active Tasks
+        </Typography>
+      </Box>
       <Box sx={{ flexGrow: 1, pt: 4 }}>
         <AppBar
           sx={{
@@ -37,52 +57,20 @@ const Header = ({ active }) => {
             maxWidth: 460,
             bgcolor: "#fff",
             mx: "auto",
+            borderRadius: "9px",
           }}
           position="static"
         >
-          <Toolbar>
-            <Container
-              sx={{
-                display: { xs: "flex", md: "flex" },
-              }}
-            >
-              <Box
-                sx={{
-                  display: { xs: "flex", md: "flex" },
-                  alignItems: { xs: "center", md: "center" },
-                }}
-              >
-                <Typography
-                  variant="h6"
-                  component="h6"
-                  noWrap
-                  sx={{
-                    fontSize: "1rem",
-                    mr: 2,
-                    color: "#333",
-                  }}
-                >
-                  {active} active
-                </Typography>
-              </Box>
-              <Box
-                sx={{
-                  display: { xs: "flex", md: "flex" },
-                  justifyContent: { xs: "center", md: "center" },
-                  alignItems: { xs: "center", md: "center" },
-                }}
-              >
-                <Button noWrap variant="contained">
-                  All
-                </Button>
-                <Button sx={{ ml: 1, mr: 1 }} noWrap variant="contained">
-                  Complete
-                </Button>
-                <Button noWrap variant="contained">
-                  Uncomplete
-                </Button>
-              </Box>
-            </Container>
+          <Toolbar
+            sx={{
+              display: { xs: "flex", md: "flex" },
+              justifyContent: { xs: "space-between", md: "space-between" },
+              alignItems: { xs: "center", md: "center" },
+            }}
+          >
+            <Button variant="contained">All</Button>
+            <Button variant="contained">Complete</Button>
+            <Button variant="contained">Uncomplete</Button>
           </Toolbar>
         </AppBar>
       </Box>

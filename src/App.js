@@ -11,7 +11,7 @@ const App = () => {
           minwidth: "200px",
           minheight: "500px",
           mb: 4,
-          mt: 20,
+          mt: 10,
           borderRadius: "1rem",
         }}
       >

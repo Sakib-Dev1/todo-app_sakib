@@ -3,6 +3,7 @@ import TodoList from "./TodoList";
 import "./Todos.css";
 
 const Todos = ({ todos, check, clear, remove, edit }) => {
+  console.log({ todos });
   return (
     <>
       <List

@@ -24,7 +24,7 @@ const AddTodo = () => {
   const addTodoListHandler = (tName) => {
     console.log({ tName });
     setTodoList((prevTodos) => {
-      return [...prevTodos, { tName, id: uuidv4(), done: false }];
+      return [...prevTodos, { tName, id: uuidv4(), isCompleted: false }];
     });
   };
 
@@ -63,12 +63,14 @@ const AddTodo = () => {
     });
     setTodoList(todoForCheckBox);
   };
-  const ActiveTodos = todoList.filter(
+  const activeTodos = todoList.filter(
     (todo) => todo.isCompleted === false
   ).length;
+  console.log(activeTodos);
+
   return (
     <>
-      <Header active={ActiveTodos} />
+      <Header active={activeTodos} />
       <div className="container">
         <form onSubmit={addTodoHandler}>
           <TextField

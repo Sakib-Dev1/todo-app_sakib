@@ -8,7 +8,6 @@ import EditTodo from "./EditTodo";
 const TodoList = ({ todo, remove, edit, check }) => {
   const [isEditing, setIsEditing] = useState(false);
 
-  console.log(todo);
   const { tName, id } = todo;
   const updatedListHandler = () => {
     setIsEditing(false);
