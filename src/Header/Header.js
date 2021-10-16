@@ -74,13 +74,25 @@ const Header = ({ active, unCompletedTodos, completedTodos, allTodos }) => {
               alignItems: { xs: "center", md: "center" },
             }}
           >
-            <Button onClick={() => allTodos()} variant="contained">
+            <Button
+              color="secondary"
+              onClick={() => allTodos()}
+              variant="contained"
+            >
               All
             </Button>
-            <Button onClick={handleComplete} variant="contained">
+            <Button
+              color="secondary"
+              onClick={handleComplete}
+              variant="contained"
+            >
               Complete
             </Button>
-            <Button onClick={handleUncomplete} variant="contained">
+            <Button
+              color="secondary"
+              onClick={handleUncomplete}
+              variant="contained"
+            >
               Uncomplete
             </Button>
           </Toolbar>
