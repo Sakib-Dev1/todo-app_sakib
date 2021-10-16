@@ -9,6 +9,7 @@ const Todos = ({ todos, check, clear, remove, edit }) => {
       <List
         sx={{
           width: { xs: "95vw", md: "100%" },
+          bgcolor: "background.paper",
           maxWidth: 460,
           borderRadius: 4,
           mx: "auto",
